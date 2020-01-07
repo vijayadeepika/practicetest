@@ -1,0 +1,48 @@
+
+
+<div class="container">
+  <input [(ngModel)]="searchbyname">
+  <div class="table table-boarderd">
+    <table>
+      <tr>
+        <th>title</th>
+        <th>url</th>
+        <th>created-at</th>
+        <th>author</th>
+      </tr>
+      <tr *ngFor='let data of storedata|searchpipe:searchbyname' (click)="rawdata(data)" data-toggle="modal" data-target="#myModal"> 
+        <td>{{data.title}}</td>
+        <td>{{data.url}}</td>
+        <td>{{data.created_at}}</td>
+        <td>{{data.author}}</td>
+      </tr>
+    </table>
+  </div>
+  
+  
+  
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+       
+        <div class="modal-header">
+          <h4 class="modal-title">details</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+      
+        <div class="modal-body">
+         {{rdata|json}}
+        </div>
+        
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
